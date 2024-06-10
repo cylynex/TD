@@ -28,7 +28,6 @@ namespace Towers {
         }
 
         private void Start() {
-            print("tower 1 online");
             hitColliders = new Collider[maxColliders];
         }
 
@@ -68,7 +67,6 @@ namespace Towers {
                 // Fire at the target
                 if (fireTimer <= 0f) {
                     Shoot();
-                    print("shoot bitch democracy is at stake!");
                     fireTimer = fireRate;
                 }
             }

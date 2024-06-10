@@ -11,7 +11,6 @@ namespace Mobs {
         public void TakeDamage(int damage) {
             hitPoints -= damage;
             if (hitPoints <= 0) {
-                print("mob dying");
                 Destroy(gameObject);
             }
         }
