@@ -8,7 +8,6 @@ namespace Mobs {
 
         [SerializeField] GameObject wheelsFront;
         [SerializeField] GameObject wheelsRear;
-        [SerializeField] Vector3 rotation;
         [SerializeField] float speed;
 
         private void Update() {

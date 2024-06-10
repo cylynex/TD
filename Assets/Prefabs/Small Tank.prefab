@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2462129503515020389}
   - component: {fileID: 8220820134803352255}
   - component: {fileID: 2515316454609581153}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SmallTank_WheelsBigFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 8151114928941076315}
   - component: {fileID: 2686645047997361383}
   - component: {fileID: 5689276090113491111}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SmallTank_WheelsSmallUpper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 1346709585849171802}
   - component: {fileID: 4686887407498933917}
   - component: {fileID: 4850786093123329695}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SmallTank_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 424854225989936431}
   - component: {fileID: 6243701450156012758}
   - component: {fileID: 4791051319616218103}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SmallTank_Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 5641227306544483852}
   - component: {fileID: 3791828961329803197}
   - component: {fileID: 3603311453482586574}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SmallTank_WheelsSmallBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,7 +426,7 @@ GameObject:
   - component: {fileID: 4067089216707609466}
   - component: {fileID: 477889817711120269}
   - component: {fileID: 7751452726668888372}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SmallTank_WheelsBigBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,9 +512,10 @@ GameObject:
   - component: {fileID: 4728293886714748384}
   - component: {fileID: 3514291594649620950}
   - component: {fileID: 877053886387702459}
-  m_Layer: 0
+  - component: {fileID: 7403051607082313766}
+  m_Layer: 6
   m_Name: Small Tank
-  m_TagString: Untagged
+  m_TagString: Mob
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -552,7 +553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d0c620c1432d0240bc38269719d4724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 0
+  hitPoints: 2
 --- !u!195 &9198904049591766255
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -629,3 +630,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1eee1193d3c44f45b10fa093e09e4d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wheelsFront: {fileID: 1300994906026599634}
+  wheelsRear: {fileID: 6921807594939608774}
+  speed: 165
+--- !u!65 &7403051607082313766
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7482531583308182030}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
