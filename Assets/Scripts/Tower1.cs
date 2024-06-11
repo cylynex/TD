@@ -61,7 +61,7 @@ namespace Towers {
             if (currentTarget != null) {
                 Vector3 direction = currentTarget.position - turretHead.position;
                 Quaternion lookRotation = Quaternion.LookRotation(direction);
-                Vector3 rotation = Quaternion.Lerp(turretHead.rotation, lookRotation, Time.deltaTime * 5f).eulerAngles;
+                Vector3 rotation = Quaternion.Lerp(turretHead.rotation, lookRotation, Time.deltaTime * 20f).eulerAngles;
                 turretHead.rotation = Quaternion.Euler(0f, rotation.y, 0f);
 
                 // Fire at the target
