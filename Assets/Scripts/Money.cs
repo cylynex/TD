@@ -9,11 +9,15 @@ namespace Core {
     public class Money : MonoBehaviour {
 
         [SerializeField] int money = 0;
-        public int GetMoney {  get { return money; } }
+        public int GetMoney { get { return money; } }
 
         [Header("Money Stuff")]
         [SerializeField] TMP_Text moneyDisplay;
-        
+
+        private void Start() {
+            UpdateMoneyDisplay();
+        }
+
         public void EarnMoney(int amount) {
             money += amount;
             UpdateMoneyDisplay();

@@ -12,7 +12,6 @@ namespace Towers {
         [SerializeField] float fireRate = 5f;           // The rate of fire of the turret
         [SerializeField] float fireTimer = 0f;          // active timer
         [SerializeField] float idleRotateSpeed = 50f;   // Idle Rotation Speed
-
         [SerializeField] float detectionRange = 10.0f;  // The range within which the turret can detect enemies
 
         [Header("Presets")]
@@ -26,6 +25,11 @@ namespace Towers {
         
         [Header("Target")]
         [SerializeField] Transform currentTarget;       // The current target enemy
+
+        [Header("Upgrade Stuff")]
+        [SerializeField] GameObject upgradeButton;      // The upgrade button
+        [SerializeField] int currentUpgradeLevel = 1;   // Current Upgrade Level.  Also starts at 1 when new tower is built.
+        [SerializeField] int maxUpgradeLevel = 4;       // Max Upgrade Level
         
         private void OnDrawGizmos() {
             Gizmos.color = sphereColor;
@@ -106,6 +110,11 @@ namespace Towers {
             if (currentTarget == null) {
                 turretHead.Rotate(Vector3.up, idleRotateSpeed * Time.deltaTime);
             }
+        }
+
+        private void OnMouseDown() {
+            print("open the upgrade menu here");
+            upgradeButton.SetActive(true);
         }
 
 
