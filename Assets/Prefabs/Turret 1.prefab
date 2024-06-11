@@ -45,21 +45,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd942e27a26684545af16c2800dc8a7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sphereColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   maxRange: 10
-  range: 3
+  fireRate: 3
+  fireTimer: 0
+  idleRotateSpeed: 25
   detectionRange: 10
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
   turretHead: {fileID: 3428678670212846457}
   projectilePrefab: {fileID: 7620233437279763633, guid: 2561cd799ea4ccd47ac48851394d6d48,
     type: 3}
   firePoint: {fileID: 8779059188795047661}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
   maxColliders: 10
   currentTarget: {fileID: 0}
-  fireRate: 3
-  fireTimer: 0
 --- !u!1 &965689885767052169
 GameObject:
   m_ObjectHideFlags: 0
