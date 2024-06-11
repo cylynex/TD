@@ -20,14 +20,23 @@ namespace Mobs {
         [SerializeField] int waveCounter;
 
         private void Start() {
-            print("Level found is: " + level.name);
-            print("Number of waves is: " + level.waves.Length);
-            print("First Wave Information: " + level.waves[0].mob.name);
-            print("mobs in first wave: " + level.waves[0].numberOfMobs);
-            currentWave = level.waves[0];
-            numberMobs = level.waves[0].numberOfMobs;
-            numberMobsSpawned = 0;
+
+            // Debug
+            // print("Level found is: " + level.name);
+            // print("Number of waves is: " + level.waves.Length);
+            // print("First Wave Information: " + level.waves[0].mob.name);
+            // print("mobs in first wave: " + level.waves[0].numberOfMobs);
+
             waveCounter = 0;
+            SetLevel();
+            spawnTimer = 0;
+        }
+
+        void SetLevel() {
+            currentWave = level.waves[waveCounter];
+            numberMobs = level.waves[waveCounter].numberOfMobs;
+            numberMobsSpawned = 0;
+            spawnTimer = level.timeBetweenWaves;
         }
 
 
@@ -44,12 +53,9 @@ namespace Mobs {
                 if (waveCounter < level.waves[0].numberOfMobs) {
                     print("moving to next wave");
                     waveCounter++;
-                    currentWave = level.waves[waveCounter];
-                    numberMobs = level.waves[waveCounter].numberOfMobs;
-                    numberMobsSpawned = 0;                    
-                    spawnTimer = level.timeBetweenWaves;
+                    SetLevel();     // Sets to the next level
                 } else {
-                    print("OUT OF WAVES");
+                    print("OUT OF WAVES - TODO Add finish to this loop.");
                 }
             }
 
