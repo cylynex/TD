@@ -11,6 +11,7 @@ namespace Mobs {
 
         private float currentHealth;
         [SerializeField] HealthBar hpBar;
+        [SerializeField] Mob mob;
 
         private void Start() {
             currentHealth = maxHitPoints;
@@ -21,6 +22,7 @@ namespace Mobs {
             hitPoints -= damage;
             if (hitPoints <= 0) {
                 Destroy(hpBar.gameObject);
+                mob.Die();
                 Destroy(gameObject);
             } else {
                 // Update the health bar
