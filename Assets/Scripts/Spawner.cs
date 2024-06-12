@@ -9,7 +9,8 @@ namespace Mobs {
     public class Spawner : MonoBehaviour {
 
         [SerializeField] GameObject mob;
-        [SerializeField] GameObject spawnPoint;
+        [SerializeField] GameObject[] spawnPoints;
+        [SerializeField] GameObject currentSpawnPoint;
         [SerializeField] int numberMobs;
         [SerializeField] int numberMobsSpawned = 0;
         [SerializeField] float timeBetweenMobs;
@@ -19,16 +20,14 @@ namespace Mobs {
         [SerializeField] Wave currentWave;
         [SerializeField] int waveCounter;
 
+        [SerializeField] bool randomizeSpawns = true;
+        [SerializeField] GameObject[] spawnPointsOrdered;
+        [SerializeField] int spawnPointer = 0;
+
         private void Start() {
-
-            // Debug
-            // print("Level found is: " + level.name);
-            // print("Number of waves is: " + level.waves.Length);
-            // print("First Wave Information: " + level.waves[0].mob.name);
-            // print("mobs in first wave: " + level.waves[0].numberOfMobs);
-
             waveCounter = 0;
             SetLevel();
+            SetSpawnPoint();
             spawnTimer = 0;
         }
 
@@ -52,8 +51,10 @@ namespace Mobs {
                 // ran outta mobs, go to next wave or end if that was last wave
                 if (waveCounter < level.waves[0].numberOfMobs) {
                     print("moving to next wave");
+                    spawnPointer++;
                     waveCounter++;
-                    SetLevel();     // Sets to the next level
+                    SetLevel();         // Sets to the next level
+                    SetSpawnPoint();    // Sets spawn point for this wave (randomly) if more than 1 spawn point
                 } else {
                     print("OUT OF WAVES - TODO Add finish to this loop.");
                 }
@@ -70,14 +71,25 @@ namespace Mobs {
             */
         }
 
+        void SetSpawnPoint() {
+            if (randomizeSpawns) {
+                int spawnPointToUse = Random.Range(0, spawnPoints.Length - 1);
+                currentSpawnPoint = spawnPoints[spawnPointToUse];
+            } else {
+                // Set the spawn in order of appearance
+                currentSpawnPoint = spawnPointsOrdered[spawnPointer];
+            }
+        }
+
         void SpawnMob() {
-            GameObject thisMob = Instantiate(currentWave.mob, spawnPoint.transform.position, Quaternion.identity);
+            GameObject thisMob = Instantiate(currentWave.mob, currentSpawnPoint.transform.position, currentSpawnPoint.transform.rotation);
             numberMobsSpawned++;
             spawnTimer = timeBetweenMobs;
         }
 
+        // Deprecated - to be removed
         void SpawnMobOld() {
-            GameObject thisMob = Instantiate(mob, spawnPoint.transform.position, Quaternion.identity);
+            GameObject thisMob = Instantiate(mob, currentSpawnPoint.transform.position, Quaternion.identity);
             numberMobsSpawned++;
             spawnTimer = timeBetweenMobs;
         }
