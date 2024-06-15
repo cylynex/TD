@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UI;
 
 namespace Mobs {
 
@@ -23,8 +24,10 @@ namespace Mobs {
         [SerializeField] bool randomizeSpawns = true;
         [SerializeField] GameObject[] spawnPointsOrdered;
         [SerializeField] int spawnPointer = 0;
+        Notifications notifier;
 
         private void Start() {
+            notifier = FindObjectOfType<Notifications>();
             waveCounter = 0;
             SetLevel();
             SetSpawnPoint();
@@ -56,19 +59,9 @@ namespace Mobs {
                     SetLevel();         // Sets to the next level
                     SetSpawnPoint();    // Sets spawn point for this wave (randomly) if more than 1 spawn point
                 } else {
-                    print("OUT OF WAVES - TODO Add finish to this loop.");
+                    notifier.ShowNotice("All Waves Complete!");
                 }
             }
-
-            // Basic Spawner - deprecated
-            /*
-            if (numberMobsSpawned < numberMobs) {
-                spawnTimer -= Time.deltaTime;
-                if (spawnTimer <= 0) {
-                    SpawnMob();
-                }
-            }
-            */
         }
 
         void SetSpawnPoint() {
@@ -83,13 +76,6 @@ namespace Mobs {
 
         void SpawnMob() {
             GameObject thisMob = Instantiate(currentWave.mob, currentSpawnPoint.transform.position, currentSpawnPoint.transform.rotation);
-            numberMobsSpawned++;
-            spawnTimer = timeBetweenMobs;
-        }
-
-        // Deprecated - to be removed
-        void SpawnMobOld() {
-            GameObject thisMob = Instantiate(mob, currentSpawnPoint.transform.position, Quaternion.identity);
             numberMobsSpawned++;
             spawnTimer = timeBetweenMobs;
         }

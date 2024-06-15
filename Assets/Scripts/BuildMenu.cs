@@ -25,9 +25,9 @@ namespace Towers {
                 print("cost: " + towerToBuild.GetComponent<Costs>().GetCost);
                 int currentCost = towerToBuild.GetComponent<Costs>().GetCost;
                 if (currentCost <= money.GetMoney) {
-                    print("have " + money.GetMoney + " money.  Ok to proceed");
                     CompleteBuilding(towerToBuild, currentCost);
                 } else {
+                    // TODO - Notify UI of insufficient funds
                     print("not enough dough");
                 }
                 
