@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UI;
 
 namespace Towers {
 
@@ -11,6 +12,11 @@ namespace Towers {
         [SerializeField] GameObject menu;
         [SerializeField] GameObject selectedTowerBase;
         Money money;
+        Notifications notice;
+
+        private void Start() {
+            notice = FindObjectOfType<Notifications>();
+        }
 
         public void ShowMenu(GameObject baseToUse) {
             menu.SetActive(true);
@@ -22,15 +28,16 @@ namespace Towers {
 
             if (selectedTowerBase.GetComponent<TowerBase>().ShowOccupied == false) {
 
-                print("cost: " + towerToBuild.GetComponent<Costs>().GetCost);
                 int currentCost = towerToBuild.GetComponent<Costs>().GetCost;
                 if (currentCost <= money.GetMoney) {
                     CompleteBuilding(towerToBuild, currentCost);
                 } else {
                     // TODO - Notify UI of insufficient funds
-                    print("not enough dough");
+                    notice.ShowNotice("Not Enough Money");
                 }
-                
+
+                menu.SetActive(false);
+
             }
         }
 
@@ -41,6 +48,7 @@ namespace Towers {
             selectedTowerBase.GetComponent<TowerBase>().SetOccupied();
             menu.SetActive(false);
             money.SpendMoney(cost);
+            notice.ShowNotice("Construction Complete");
         }
 
     }
